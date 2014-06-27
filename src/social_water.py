@@ -179,9 +179,10 @@ class email_reader:
                 sys.stdout.flush()
             resp, data = self.m.fetch(cm, "(RFC822)")
             msg = email.message_from_string(data[0][1])
-            if 'sms from' in msg['Subject'].lower():
-                self.messages.append(email_message(msg['Date'],msg['Subject'],msg.get_payload()))
-        print '-'
+            #if 'sms from' in msg['Subject'].lower():
+            #    self.messages.append(email_message(msg['Date'],msg['Subject'],msg.get_payload()))
+            self.messages.append(email_message(msg['Date'],msg['Subject'],msg.get_payload()))
+	print '-'
         
     # now parse the actual messages -- date and body
     def parsemsgs(self,site_params):
